@@ -1,0 +1,43 @@
+body{
+    background-color: rgba(75, 201, 182, 0.145);
+}
+header{
+    position: relative;
+    width: auto;
+    text-align: center;
+    padding: 5px;
+}
+nav{
+    position: relative;
+    margin: auto;
+    width: 100%;
+    background-color: rgb(214, 214, 243);
+}
+nav ul{
+    position: relative;
+    margin: auto;
+    width: 50%;
+    text-align: none;
+}
+nav ul li{
+    display: inline-block;
+    margin: auto;
+    width: 20%;
+    line-height: 50px;
+    list-style: none;
+    color: white;
+}
+nav ul li a{
+    text-decoration: none;
+    color: white;
+}
+section{
+    position: relative;
+    margin: auto;
+}
+footer{
+    background: rgb(110, 98, 169);
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
