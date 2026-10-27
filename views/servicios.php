@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Basic CRUD Application - jQuery EasyUI CRUD Demo</title>
-    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
-    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/color.css">
-    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/demo/demo.css">
-    <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="jquery/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="jquery/themes/color.css">
+    <script type="text/javascript" src="jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery.easyui.min.js"></script>
 </head>
 <body>
     <h2>Basic CRUD Application</h2>
@@ -38,19 +37,19 @@
         <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
             <h3>Información del Estudiante</h3>
             <div style="margin-bottom:10px">
-                <input name="txtcedula" class="easyui-textbox" required="true" label="Cedula:" style="width:100%">
+                <input name="cedula" class="easyui-textbox" required="true" label="Cedula:" style="width:100%">
             </div>
             <div style="margin-bottom:10px">
-                <input name="txtnombre" class="easyui-textbox" required="true" label="Nombre:" style="width:100%">
+                <input name="nombre" class="easyui-textbox" required="true" label="Nombre:" style="width:100%">
             </div>
             <div style="margin-bottom:10px">
-                <input name="txtapellido" class="easyui-textbox" required="true" label="Apellido:" style="width:100%">
+                <input name="apellido" class="easyui-textbox" required="true" label="Apellido:" style="width:100%">
             </div>
             <div style="margin-bottom:10px">
-                <input name="txtdireccion" class="easyui-textbox" required="true" label="Direccion:" style="width:100%">
+                <input name="direccion" class="easyui-textbox" required="true" label="Direccion:" style="width:100%">
             </div>
             <div style="margin-bottom:10px">
-                <input name="txttelefono" class="easyui-textbox" required="true" label="Telefono:" style="width:100%">
+                <input name="telefono" class="easyui-textbox" required="true" label="Telefono:" style="width:100%">
             </div>
         </form>
     </div>
@@ -68,9 +67,9 @@
         function editUser(){
             var row = $('#dg').datagrid('getSelected');
             if (row){
-                $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit User');
+                $('#dlg').dialog('open').dialog('center').dialog('setTitle','Editar Estudiante');
                 $('#fm').form('load',row);
-                url = 'update_user.php?id='+row.id;
+                url = 'models/update.php?cedula='+row.cedula;
             }
         }
         function saveUser(){
@@ -97,9 +96,9 @@
         function destroyUser(){
             var row = $('#dg').datagrid('getSelected');
             if (row){
-                $.messager.confirm('Confirm','Are you sure you want to destroy this user?',function(r){
+                $.messager.confirm('Confirm','Esta seguro de eliminar este estudiante?',function(r){
                     if (r){
-                        $.post('destroy_user.php',{id:row.id},function(result){
+                        $.get('models/delete.php?cedula='+row.cedula,function(result){
                             if (result.success){
                                 $('#dg').datagrid('reload');    // reload the user data
                             } else {
